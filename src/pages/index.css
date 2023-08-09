@@ -1,0 +1,39 @@
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    padding: 30px;
+}
+
+.crossword-wrapper {
+    max-width: 60%;
+    display: flex;
+    gap: 1em;
+}
+
+.clue.correct {
+    text-decoration: line-through;
+    color: rgb(130, 130, 130);
+}
+
+.clue.correct::before {
+    content: '\2713';
+    /* a.k.a. checkmark: ✓ */
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(100, 200, 100);
+    margin-right: 0.25em;
+}
+
+.direction {
+    width: 10em;
+    height: 30em;
+    overflow: scroll;
+}
+
+.direction .header {
+    margin-top: 0;
+}
+
+.grid {
+    width: 30em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

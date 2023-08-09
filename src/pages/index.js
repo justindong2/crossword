@@ -1,176 +1,280 @@
-import * as React from "react"
+import * as React from "react";
+import {
+    CrosswordProvider,
+    DirectionClues,
+    CrosswordGrid,
+} from "@jaredreisinger/react-crossword";
+import "./index.css";
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/getting-started/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
+const data = {
+    across: {
+        2: {
+            row: 0,
+            col: 3,
+            clue: "using namespace _ (C++)",
+            answer: "STD",
+            hint: "short for standard",
+        },
+        7: {
+            row: 1,
+            col: 1,
+            clue: "Chicago airport with a playground area",
+            answer: "OHARE",
+        },
+        9: {
+            row: 1,
+            col: 9,
+            clue: "The first (spicy) restaurant we tried in Chinatown!",
+            answer: "SPICEC",
+        },
+        10: {
+            row: 2,
+            col: 3,
+            clue: "John Wick",
+            answer: "KEANU",
+        },
+        11: {
+            row: 3,
+            col: 0,
+            clue: "Frequently",
+            answer: "OFTEN",
+        },
+        12: {
+            row: 3,
+            col: 9,
+            clue: "National park in Maine",
+            answer: "ACADIA",
+        },
+        14: {
+            row: 5,
+            col: 5,
+            clue: "You play him for his ult on that one map in Valorant",
+            answer: "BRIMSTONE",
+            hint: "George: Weilin use your smokes! Weilin: I don't need to cause I'm smoking hot!",
+        },
+        15: {
+            row: 6,
+            col: 0,
+            clue: "sorry ignore this LOL (answer is TG)",
+            answer: "TG",
+        },
+        16: {
+            row: 7,
+            col: 2,
+            clue: "We did this activity on the tidal basin!",
+            answer: "PADDLEBOAT",
+        },
+        22: {
+            row: 9,
+            col: 7,
+            clue: "It's her special day today!",
+            answer: "LONA",
+        },
+        24: {
+            row: 10,
+            col: 0,
+            clue: "A type of something, or a word I'd use to describe you!",
+            answer: "KIND",
+        },
+        26: {
+            row: 10,
+            col: 5,
+            clue: "Where the ambulance goes",
+            answer: "ER",
+        },
+        28: {
+            row: 10,
+            col: 10,
+            clue: "Trashy _ (gamer tag)",
+            answer: "TABBY",
+        },
+        30: {
+            row: 11,
+            col: 2,
+            clue: "Your office building in Seattle",
+            answer: "NITRONORTH",
+        },
+        32: {
+            row: 12,
+            col: 0,
+            clue: "NCH _",
+            answer: "WEST",
+        },
+        33: {
+            row: 12,
+            col: 6,
+            clue: "Metal formerly used to make cans",
+            answer: "TIN",
+        },
+        34: {
+            row: 12,
+            col: 12,
+            clue: "We had this noodle dish together so many times!",
+            answer: "PHO",
+        },
+        36: {
+            row: 13,
+            col: 6,
+            clue: "I think I did it but I just can't prove it… (proof technique)",
+            answer: "INDUCTION",
+        },
+        37: {
+            row: 14,
+            col: 2,
+            clue: "Along with running, this was part of our morning exercise routine",
+            answer: "YOGA",
+        },
+        38: {
+            row: 14,
+            col: 12,
+            clue: "Explosive",
+            answer: "TNT",
+        },
+    },
+    down: {
+        1: {
+            row: 0,
+            col: 1,
+            clue: "omg guys I have the most kills on the team!",
+            answer: "TOPFRAG",
+            hint: "When you carry the team in Valorant, you are TOP_",
+        },
+        2: {
+            row: 0,
+            col: 3,
+            clue: "Sushi restaurant in Brookings",
+            answer: "SAKE",
+        },
+        3: {
+            row: 0,
+            col: 4,
+            clue: "The result of following a popular pattern, such as in fashion",
+            answer: "TREND",
+        },
+        4: {
+            row: 0,
+            col: 5,
+            clue: "Breaking Bad federal agency",
+            answer: "DEA",
+        },
+        5: {
+            row: 0,
+            col: 11,
+            clue: "Hana Song's in-game name sounds like this (with an extra i)",
+            answer: "DIVA",
+        },
+        6: {
+            row: 0,
+            col: 13,
+            clue: "We wrote complex queries to select these",
+            answer: "RECIPES",
+        },
+        8: {
+            row: 1,
+            col: 7,
+            clue: "Rains from above!",
+            answer: "JUSTICE",
+        },
+        13: {
+            row: 5,
+            col: 3,
+            clue: "Neighborhood in South Philly: _ Hospital",
+            answer: "GRAD",
+        },
+        15: {
+            row: 6,
+            col: 0,
+            clue: "We got ramen here the first time we had dinner!",
+            answer: "TERAKAWA",
+        },
+        17: {
+            row: 7,
+            col: 5,
+            clue: "Someone who is eating at a restaurant",
+            answer: "DINER",
+        },
+        18: {
+            row: 7,
+            col: 8,
+            clue: "Our favorite naturey place on campus to run",
+            answer: "BIOPOND",
+        },
+        19: {
+            row: 8,
+            col: 12,
+            clue: "We analyzed posts from this subreddit in Big Data Analytics",
+            answer: "WSB",
+        },
+        20: {
+            row: 8,
+            col: 14,
+            clue: "Gilded Age Richmond estate named after a May",
+            answer: "MAYMONT",
+        },
+        21: {
+            row: 9,
+            col: 2,
+            clue: "Hotels",
+            answer: "INNS",
+        },
+        23: {
+            row: 9,
+            col: 10,
+            clue: "American telecom company",
+            answer: "ATT",
+        },
+        25: {
+            row: 10,
+            col: 3,
+            clue: "Stay in the middle, like you a little ♫",
+            answer: "DITTO",
+        },
+        27: {
+            row: 10,
+            col: 6,
+            clue: "Tortilla-like Indian flatbread that isn't naan",
+            answer: "ROTI",
+        },
+        29: {
+            row: 10,
+            col: 11,
+            clue: "Something you can say if you're surprised",
+            answer: "AH",
+        },
+        31: {
+            row: 11,
+            col: 7,
+            clue: "Press this floor on the elevator",
+            answer: "NINE",
+        },
+        34: {
+            row: 12,
+            col: 12,
+            clue: "Inside a peach and cherry",
+            answer: "PIT",
+        },
+        35: {
+            row: 12,
+            col: 13,
+            clue: "Sweetie or darling, for short",
+            answer: "HON",
+        },
+    },
+};
 
 const IndexPage = () => {
-  return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
-  )
-}
+    return (
+        <div className="crossword-wrapper">
+            <CrosswordProvider
+                data={data}
+                onCrosswordCorrect={() => (document.location.href = "./bday")}
+            >
+                <DirectionClues direction="across" />
+                <CrosswordGrid />
+                <DirectionClues direction="down" />
+            </CrosswordProvider>
+        </div>
+    );
+};
 
-export default IndexPage
-
-export const Head = () => <title>Home Page</title>
+export default IndexPage;
